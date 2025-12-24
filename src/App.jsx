@@ -863,6 +863,9 @@ const totalNotifications = dstNotifications.length + holidayNotifications.length
     );
   };
 
+  const allUSZones = useMemo(() => TIMEZONES.us, []);
+
+
   const MeetingPlanner = () => {
   const conversions = useMemo(() => 
     convertMeetingTime(meetingTime, selectedZone, visibleUSZones),
@@ -1214,7 +1217,7 @@ const totalNotifications = dstNotifications.length + holidayNotifications.length
         {activeTab === 'meetings' && <MeetingPlanner />}
         {activeTab === 'map' && (
           <MapView
-            visibleUSZones={visibleUSZones}
+            visibleUSZones={allUSZones}
             is24Hour={is24Hour}
           />
         )}

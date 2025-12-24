@@ -148,12 +148,14 @@ export default function MapView({ visibleUSZones, is24Hour }) {
       const baseColor = REGION_COLORS[meta.region] || "#E0E0E0";
 
       styles[code] = {
-        fill: baseColor,
-        opacity: visible ? (isHovered ? 0.95 : 0.75) : 0.2,
+        opacity: visible ? (isHovered ? 1 : 0.8) : 0.15,
         stroke: "#333",
         strokeWidth: isHovered ? 2 : 0.75,
-        filter: isHovered ? 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' : 'none'
+        filter: isHovered
+          ? 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
+          : 'none'
       };
+
     });
 
     return styles;

@@ -39,7 +39,6 @@ const getStateCodeFromClassAttr = (el) => {
 
 const applyStyleObjectToElement = (el, styleObj) => {
   if (!styleObj) {
-    el.removeAttribute('fill');
     el.style.opacity = '';
     el.style.stroke = '';
     el.style.strokeWidth = '';
@@ -47,15 +46,12 @@ const applyStyleObjectToElement = (el, styleObj) => {
     return;
   }
 
-  // 🔥 THIS IS THE CRITICAL LINE
-  el.removeAttribute('fill');
-  el.setAttribute('fill', styleObj.fill);
-
   if (styleObj.opacity != null) el.style.opacity = String(styleObj.opacity);
   if (styleObj.stroke != null) el.style.stroke = styleObj.stroke;
   if (styleObj.strokeWidth != null) el.style.strokeWidth = String(styleObj.strokeWidth);
   if (styleObj.filter != null) el.style.filter = styleObj.filter;
 };
+
 
 
 const USMapSVG = ({ onStateHover, onStateLayout, stateStyles = {}, className, style }) => {
