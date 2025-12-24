@@ -82,9 +82,9 @@ export default function MapView({ visibleUSZones, is24Hour }) {
   const mouseMoveRafRef = useRef(null);
   const latestMousePosRef = useRef({ x: 0, y: 0 });
 
-  const visibleRegions = useMemo(
-  () => new Set(visibleUSZones.map(z => z.label)),
-  [visibleUSZones]
+  const visibleTimezones = useMemo(
+    () => new Set(visibleUSZones.map(z => z.label)),
+    [visibleUSZones]
   );
 
   const showAllRegions = visibleUSZones.length === 0;
@@ -143,7 +143,7 @@ export default function MapView({ visibleUSZones, is24Hour }) {
     const styles = {};
 
     Object.entries(US_STATES_META).forEach(([code, meta]) => {
-      const visible = showAllRegions || visibleRegions.has(meta.region);
+      const visible = showAllRegions || visibleTimezones.has(meta.region);
       const isHovered = hoveredState === code;
       const baseColor = REGION_COLORS[meta.region] || "#E0E0E0";
 
